@@ -1,0 +1,1022 @@
+/* Grundinställningar för sidan */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header */
+header {
+    background-color: #9cbcf2;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin: 0;
+}
+
+.logo a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+
+.logo-part-black {
+    color: #000;
+}
+
+.logo-part-white {
+    color: #fff;
+}
+
+.header-center {
+    flex: 1;
+    text-align: center;
+}
+
+.header-nav {
+    display: inline-flex;
+    gap: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-nav a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.header-nav a:hover {
+    text-decoration: underline;
+    color: #333;
+}
+
+/* Banner Text */
+.banner-text {
+    font-family: "Georgia", serif;
+    font-size: 1.5em;
+    font-style: italic;
+    color: #333;
+    margin-top: 15px;
+    text-align: center;
+}
+
+#main-banner {
+    margin: 15px auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction:column ;
+}
+
+#main-banner img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95vw;
+    max-width: 1600px;
+    height: 500px;
+    object-fit: cover;
+}
+
+#main-banner p {
+    font-size: 1.5em;
+    font-style: italic;
+    color: #333;
+    margin-top: 15px;
+    text-align: center;
+}
+
+/* Sök Resa Rutan */
+#search-box {
+    text-align: center;
+    margin: 20px auto;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-box {
+    width: 300px;
+    padding: 20px;
+    border: 2px solid #9cbcf2;
+    border-radius: 10px;
+    background-color: #9cbcf2;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    text-align: center;
+}
+
+.search-box:hover {
+    transform: scale(1.05);
+    background-color: #e0f7ff;
+}
+
+.search-box p {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Ticket Selection */
+.ticket-category {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.ticket-label {
+    flex: 1;
+    text-align: left;
+}
+
+.ticket-counter {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.ticket-counter button {
+    background-color: #9cbcf2;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.ticket-counter button:hover {
+    background-color: #87a4d6;
+}
+
+.ticket-counter .quantity {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+
+/* Demolåtar */
+.demo-songs {
+    margin-left: 20px;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.demo-songs h2 {
+    font-size: 17px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.demo-songs ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.demo-songs li {
+    margin-bottom: 5px;
+}
+
+.demo-songs a {
+    text-decoration: none;
+    color: white;
+}
+
+.demo-songs a:hover {
+    text-decoration: underline;
+}
+#song-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start; 
+    padding: 20px;
+}
+.song-item {
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.song-item:hover {
+    transform: scale(1.05);
+}
+
+.song-item h3 {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.song-item p {
+    font-size: 0.9em;
+    color: #555;
+}
+
+/* Linjekarta-sektion */
+#linjekarta-section {
+    text-align: center;
+    margin: 30px 0;
+}
+
+#linjekarta-section h3 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.linjekarta {
+    width: 90%;
+    max-width: 1100px;
+    max-height: 550px;
+    object-fit: cover;
+    margin: 20px auto;
+    display: block;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Instruction Text */
+#instruction-text {
+    text-align: center;
+    margin: 10px auto;
+    font-size: 1.1em;
+    font-weight: normal;
+    color: #555;
+}
+
+/* Main innehåll */
+main {
+    flex: 1;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+main h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="text"], input[type="datetime-local"]{
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus, input[type="datetime-local"]:focus{
+    border-color: #9cbcf2;
+    outline: none;
+}
+
+.form-buttons{
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+button{
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #9cbcf2;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3 ease;
+}
+
+button:hover{
+    background-color: #87a4d6;
+}
+
+button[type="button"]:hover{
+    background-color: #bbb;
+}
+
+/* Footer */
+footer {
+    background-color: #9cbcf2;
+    color: #000;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0.9em;
+    margin-top: auto;
+}
+
+footer a{
+    color: #000;
+    text-decoration: none;
+}
+
+footer a:hover{
+    text-decoration: underline;
+}
+/* Responsiv design */
+
+/* För skärmar upp till 1024px */
+@media (max-width: 1024px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header-nav {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .logo h1 {
+        font-size: 2em;
+    }
+
+    main h2 {
+        font-size: 1.6em;
+    }
+
+    form {
+        width: 90%;
+    }
+
+    footer {
+        font-size: 0.8em;
+        padding: 15px;
+    }
+    
+    .language-selector {
+        margin-left: auto;
+        margin-right: 20px;
+    }
+    
+    .language-selector select {
+        font-size: 1em;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+    }
+}
+
+/* För skärmar upp till 768px */
+@media (max-width: 768px) {
+    body {
+        font-size: 0.9em;
+    }
+
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header-nav {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .search-box {
+        width: 90%;
+    }
+
+    form {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+
+    footer {
+        font-size: 0.8em;
+    }
+}
+
+/* För skärmar upp till 480px */
+@media (max-width: 480px) {
+    body {
+        font-size: 0.8em;
+    }
+
+    .search-box {
+        width: 95%;
+        padding: 10px;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    main h2 {
+        font-size: 1.4em;
+    }
+
+    footer {
+        font-size: 0.7em;
+    }
+}
+/* Resor */
+#trip-list {
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+.trip-item {
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto 20px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    border: 2px solid #000;
+    list-style: none;
+}
+
+.trip-item:hover {
+    transform: scale(1.05);
+}
+
+.trip-item h3 {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.trip-item p {
+    font-size: 0.9em;
+    color: #555;
+}
+.trip-item a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header */
+header {
+    background-color: #9cbcf2;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin: 0;
+}
+
+.logo a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+
+.logo-part-black {
+    color: #000;
+}
+
+.logo-part-white {
+    color: #fff;
+}
+
+.header-center {
+    flex: 1;
+    text-align: center;
+}
+
+.header-nav {
+    display: inline-flex;
+    gap: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-nav a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.header-nav a:hover {
+    text-decoration: underline;
+    color: #333;
+}
+
+/* Banner Text */
+.banner-text {
+    font-family: "Georgia", serif;
+    font-size: 1.5em;
+    font-style: italic;
+    color: #333;
+    margin-top: 15px;
+    text-align: center;
+}
+
+#main-banner {
+    margin: 15px auto;
+    text-align: center;
+}
+
+#main-banner img {
+    width: 95vw;
+    max-width: 1600px;
+    height: 500px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+#main-banner p {
+    font-size: 1.5em;
+    font-style: italic;
+    color: #333;
+    margin-top: 15px;
+    text-align: center;
+}
+
+/* Sök Resa Rutan */
+#search-box {
+    text-align: center;
+    margin: 20px auto;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-box {
+    width: 300px;
+    padding: 20px;
+    border: 2px solid #9cbcf2;
+    border-radius: 10px;
+    background-color: #9cbcf2;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    text-align: center;
+}
+
+.search-box:hover {
+    transform: scale(1.05);
+    background-color: #e0f7ff;
+}
+
+.search-box p {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Ticket Selection */
+.ticket-category {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.ticket-label {
+    flex: 1;
+    text-align: left;
+}
+
+.ticket-counter {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.ticket-counter button {
+    background-color: #9cbcf2;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.ticket-counter button:hover {
+    background-color: #87a4d6;
+}
+
+.ticket-counter .quantity {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+
+/* Demolåtar */
+.demo-songs {
+    margin-left: 20px;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.demo-songs h2 {
+    font-size: 17px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.demo-songs ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.demo-songs li {
+    margin-bottom: 5px;
+}
+
+.demo-songs a {
+    text-decoration: none;
+    color: white;
+}
+
+.demo-songs a:hover {
+    text-decoration: underline;
+}
+#song-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start; 
+    padding: 20px;
+}
+.song-item {
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.song-item:hover {
+    transform: scale(1.05);
+}
+
+.song-item h3 {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.song-item p {
+    font-size: 0.9em;
+    color: #555;
+}
+
+/* Linjekarta-sektion */
+#linjekarta-section {
+    text-align: center;
+    margin: 30px 0;
+}
+
+#linjekarta-section h3 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.linjekarta {
+    width: 90%;
+    max-width: 1100px;
+    max-height: 550px;
+    object-fit: cover;
+    margin: 20px auto;
+    display: block;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Hjälp-sektion */
+.help-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.help-section li {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.help-section li a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #87a4d6;
+    margin-bottom: 5px;
+}
+
+.help-section li p {
+    margin: 0;
+    color: #333;
+    text-align: left;
+}
+
+/* Instruction Text */
+#instruction-text {
+    text-align: center;
+    margin: 10px auto;
+    font-size: 1.1em;
+    font-weight: normal;
+    color: #555;
+}
+
+/* Stjärn-betyg */
+.star-rating {
+    display: flex;
+    gap: 5px;
+    direction: rtl;
+}
+
+.star-rating input {
+    display: none;
+}
+
+.star-rating label {
+    font-size: 2em;
+    color: #ddd;
+    cursor: pointer;
+}
+
+.star-rating input:checked ~ label {
+    color: gold;
+}
+
+/* Main innehåll */
+main {
+    flex: 1;
+    padding: 20px;
+}
+
+main h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Footer */
+footer {
+    background-color: #9cbcf2;
+    color: #000;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0.9em;
+    margin-top: auto;
+}
+
+/* Stil för stationresultat */
+.results-container{
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    max-height: 150px;
+    overflow-y: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.result-item{
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.result-item:hover{
+    background-color: #f0f0f0;
+}
+
+.result-item:last-child{
+    border-bottom: none;
+}
+
+/* För skärmar upp till 1024px */
+@media (max-width: 1024px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header-nav {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .logo h1 {
+        font-size: 2em;
+    }
+
+    main h2 {
+        font-size: 1.6em;
+    }
+
+    form {
+        width: 90%;
+    }
+
+    footer {
+        font-size: 0.8em;
+        padding: 15px;
+    }
+    
+    .language-selector {
+        margin-left: auto;
+        margin-right: 20px;
+    }
+    
+    .language-selector select {
+        font-size: 1em;
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+    }
+}
+
+/* För skärmar upp till 768px */
+@media (max-width: 768px) {
+    body {
+        font-size: 0.9em;
+    }
+
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header-nav {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .search-box {
+        width: 90%;
+    }
+
+    form {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+
+    footer {
+        font-size: 0.8em;
+    }
+}
+
+/* För skärmar upp till 480px */
+@media (max-width: 480px) {
+    body {
+        font-size: 0.8em;
+    }
+
+    .search-box {
+        width: 95%;
+        padding: 10px;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    main h2 {
+        font-size: 1.4em;
+    }
+
+    footer {
+        font-size: 0.7em;
+    }
+}
+/* Resor */
+#trip-list {
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+.trip-item {
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto 20px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    border: 2px solid #000;
+    list-style: none;
+}
+
+.trip-item:hover {
+    transform: scale(1.05);
+}
+
+.trip-item h3 {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.trip-item p {
+    font-size: 0.9em;
+    color: #555;
+}
+.trip-item a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+}

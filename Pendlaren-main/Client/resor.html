@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="trafi.css">
+    <title>TraFi - Demolåtar</title>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <h1>
+                        <span class="logo-part-black">Tra</span><span class="logo-part-white">Fi</span>
+                    </h1>
+                </a>
+            </div>
+            <div class="header-center">
+                <nav class="header-nav">
+                    <a href="upptack-resan.html">Upptäck din resa</a>
+                    <a href="hjalp.html">Hjälp</a>
+                </nav>
+            </div>
+            <div class="language-switch">
+                <a href="?lang=sv">Svenska</a> | <a href="?lang=en">English</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <h2>Resor</h2>
+        <p>Här kan ser resor mellan avgång och destination</p>
+        <ul id="trip-list">
+
+        </ul>
+    </main>
+    <footer>
+        <p>© 2025 TraFi. Alla rättigheter förbehållna.</p>
+    </footer>
+
+    <script>
+        const baseURL = "http://localhost:7123/";
+        const fromID = localStorage.getItem("fromID");
+        const toID = localStorage.getItem("toID");
+        const departureTime = localStorage.getItem("departureTime");
+
+        async function fetchTrip() {
+
+            if (!fromID || !toID) {
+                console.error("En eller båda hållplats-id:n kunde inte hämtas.");
+                return;
+            }
+
+            // Proceed to fetch trips using the station IDs
+            try {
+                const options = {
+                    method: "GET",
+                    headers: {
+                        "Accept": "application/json"
+                    }
+                };
+                const response = await fetch(baseURL + `trip?fromStationId=${fromID}&toStationId=${toID}&departureTime=${encodeURIComponent(departureTime)}`, options);
+                if (!response.ok) {
+                    console.log("Kunde inte hämta resor");
+                    window.location.href = "sok-resan.html";
+                    return;
+                }
+                const trips = await response.json();
+                renderTrip(trips);
+            } catch (error) {
+                console.error("Fel vid hämtning av resor", error);
+            }
+        }
+
+        function renderTrip(trips) {
+        const tripList = document.getElementById("trip-list");
+        trips.forEach(trip => {
+            const listItem = document.createElement("li");
+            listItem.classList.add("trip-item");
+            const travelTimeInMin = parseTravelTime(trip.travelTime);
+
+            listItem.innerHTML = `
+                <a href="demolatar.html?travelTime=${travelTimeInMin}" style="text-decoration: none; color: inherit;">
+                    <h2>${trip.departureTime} → ${trip.arrivalTime}</h2>
+                    <h3>${trip.departureFrom} → ${trip.arrivalAt}</h3>
+                    <p><strong>Travel Time:</strong> ${trip.travelTime}</p>
+                </a>
+            `;
+
+            listItem.addEventListener("click", () => {
+                console.log(`Clicked on trip: ${trip.departureFrom} → ${trip.arrivalAt}`);
+            });
+
+            tripList.appendChild(listItem);
+        });
+        }
+
+        //test
+        function parseTravelTime(travelTimeString){
+            const regex = /(\d+)\s+hours?\s+and\s+(\d+)\s+minutes?/;
+            const matches = travelTimeString.match(regex);
+            if(matches){
+                const hours = parseInt(matches[1]);
+                const minutes = parseInt(matches[2]);
+                return (hours * 60) + minutes;
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", fetchTrip);
+    </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="trafi.css">
+    <title>TraFi - Demolåtar</title>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <h1>
+                        <span class="logo-part-black">Tra</span><span class="logo-part-white">Fi</span>
+                    </h1>
+                </a>
+            </div>
+            <div class="header-center">
+                <nav class="header-nav">
+                    <a href="upptack-resan.html">Upptäck din resa</a>
+                    <a href="sok-resan.html">Sök Resa</a>
+                </nav>
+            </div>
+            <div class="language-switch">
+                <a href="?lang=sv">Svenska</a> | <a href="?lang=en">English</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <h2>Demolåtar</h2>
+        <p>Här kan du lyssna på våra exklusiva demolåtar!</p>
+        <ul id="song-list">
+
+        </ul>
+    </main>
+    <footer>
+        <p>© 2025 TraFi. Alla rättigheter förbehållna.</p>
+    </footer>
+
+    <script>
+        const baseURL = "http://localhost:7123/";
+        
+        async function fetchSongs(travelTime) {
+            console.log(travelTime);
+            try {
+                const options = {
+                    method: "GET",
+                    headers: {
+                    "Accept": "application/json"
+                    }
+                };
+                const response = await fetch(baseURL + "music?travelTime=" + travelTime, options);
+                if (!response.ok) {
+                    throw new Error("Kunde inte hämta låtar.");
+                }
+                const musicData = await response.json();
+                renderSongs(musicData);
+            } catch (error) {
+                console.error("Fel vid hämtning av låtar:", error);
+            }
+        }
+            
+        function renderSongs(songs) {
+            const songList = document.getElementById("song-list");
+            songs.forEach(song => {
+                const listItem = document.createElement("ul");
+                listItem.classList.add("song-item");
+                listItem.innerHTML = `
+                    <h3>${song.name}</h3>
+                    <p><strong>Band:</strong> ${song.band}</p>
+                    <p><strong>Genre:</strong> ${song.genre}</p>
+                    <p><strong>Date:</strong> ${song.date}</p>
+                    <audio controls>
+                        <source src="${song.trackLink}" type="audio/mp3">
+                        Your browser does not support the audio element.
+                    </audio>
+                `;
+                songList.appendChild(listItem);
+            });
+        }
+        
+        const urlParams = new URLSearchParams(window.location.search);
+        const travelTime = urlParams.get('travelTime');
+
+        document.addEventListener("DOMContentLoaded", fetchSongs(travelTime));
+    </script>
+</body>
+</html>

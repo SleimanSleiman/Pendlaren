@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="trafi.css">
+    <title>Sök resa</title>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <h1>
+                        <span class="logo-part-black">Tra</span><span class="logo-part-white">Fi</span>
+                    </h1>
+                </a>
+            </div>
+            <div class="header-center">
+                <nav class="header-nav">
+                    <a href="index.html">Hem</a>
+                    <a href="upptack-resan.html">Upptäck din resa</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main>
+        <h2>Sök Resa</h2>
+        <form id="trip-search-form" onsubmit="event.preventDefault(); validateAndSubmitForm(event);">
+            <label for="from-destination">Från:</label>
+            <input type="text" id="from-destination" placeholder="Ange avgångsort (ex. Malmö)" autocomplete="off" list="stations" required>
+            <div id="from-results" class="results-container"></div>
+            
+            <label for="to-destination">Till:</label>
+            <input type="text" id="to-destination" placeholder="Ange destination (ex. Lund)" autocomplete="off" list="stations" required>
+            <div id="to-results" class="results-container"></div>
+
+            <label for="departure-time">Avgångstid:</label>
+            <input type="datetime-local" id="departure-time" required>
+
+            <div class="form-buttons">
+                <button type="submit">Sök Resa</button>
+                <button type="button" onclick="resetForm()">Rensa</button>
+            </div>
+        </form>
+    </main>
+    <footer>
+        <p>© 2025 TraFi. Alla rättigheter förbehållna.</p>
+    </footer>
+    <script>
+
+        async function searchStations(input, resultsContainer) {
+            const trimmedInput = input.replace(/\s/g, '');
+
+            if(!trimmedInput){
+                resultsContainer.innerHTML = "";
+                return
+            }
+
+            const response = await fetch(`http://localhost:7123/search?input=${encodeURIComponent(trimmedInput)}`);
+            if(!response.ok){
+                alert("Fel vid hämtning av stationer. Kontrollera att din sökterm är skriven med giltliga tecken A-Ö, a-ö");
+            }
+            const data = await response.json();
+
+            resultsContainer.innerHTML = "";
+
+            data.forEach(station => {
+                const stationItem = document.createElement("div");
+                stationItem.className = "station-item";
+                stationItem.textContent = station.name;
+                stationItem.dataset.id = station.ID;
+
+                stationItem.addEventListener('click', () => {
+                    const inputField = resultsContainer.previousElementSibling;
+                    inputField.value = station.name;
+                    inputField.dataset.id = station.ID;
+                    resultsContainer.innerHTML = "";
+                });
+
+                resultsContainer.appendChild(stationItem);
+            });
+        }
+
+        document.getElementById("from-destination").addEventListener("keypress", (e) =>{
+            if(e.key === "Enter"){
+                e.preventDefault();
+                const input = e.target.value.trim();
+                const resultsContainer = document.getElementById("from-results");
+                searchStations(input, resultsContainer);
+            }
+        });
+
+        document.getElementById("to-destination").addEventListener("keypress", (e) =>{
+            if(e.key === "Enter"){
+                e.preventDefault();
+                const input = e.target.value.trim();
+                const resultsContainer = document.getElementById("to-results");
+                searchStations(input, resultsContainer);
+            }
+        });
+        
+        function resetForm() {
+            document.getElementById("trip-search-form").reset();
+            document.getElementById("from-results").innerHTML = "";
+            document.getElementById("to-results").innerHTML = "";
+        }
+
+        async function validateAndSubmitForm(event) {
+            event.preventDefault();
+
+            const from = document.getElementById("from-destination");
+            const to = document.getElementById("to-destination");
+            const departureTime = document.getElementById("departure-time").value.trim();
+            const fromResults = document.getElementById("from-results");
+            const toResults = document.getElementById("to-results");
+            let shouldReturn = false;
+            
+            if(!departureTime){
+                alert("Vänligen ange en avgångstid");
+                return;
+            }
+
+            if(!from.dataset.id){
+                const fromText = from.value.trim();
+                if(!fromText){
+                    alert("Vänligen ange avgångsstation");
+                    from.focus();
+                    return;
+                }
+                await searchStations(fromText, fromResults);
+                alert("Vänligen välj en avgångsstation från listan");
+                from.focus();
+                shouldReturn = true;
+            }
+
+            if(!to.dataset.id){
+                const toText = to.value.trim();
+                if(!toText){
+                    alert("Vänligen ange ankomststation");
+                    to.focus();
+                    return;
+                }
+                await searchStations(toText, toResults);
+                alert("Vänligen välj en ankomststation från listan");
+                to.focus();
+                shouldReturn = true;
+            }
+
+            if(shouldReturn){
+                return;
+            }
+            
+            if(from.dataset.id.toLowerCase() === to.dataset.id.toLowerCase()){
+                alert("Tänker du resa till samma plats? Grattis du är redan där!");
+                return;
+            }
+
+            localStorage.setItem("fromID", from.dataset.id);
+            localStorage.setItem("toID", to.dataset.id);
+            localStorage.setItem("departureTime", departureTime + ":00");
+            window.location.href = "resor.html";
+
+        }
+    </script>
+</body>
+</html>
