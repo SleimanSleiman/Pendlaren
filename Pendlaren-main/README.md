@@ -1,6 +1,6 @@
-# Pendlaren
+# TraFi
 
-Pendlaren är en applikation som låter användare ange två hållplatser och få en genererad spellista som varar ungefär lika länge som själva resan.
+TraFi är en applikation som låter användare ange två hållplatser och få en genererad spellista som varar ungefär lika länge som själva resan.
 
 ## Funktioner
 
@@ -45,4 +45,4 @@ Klistra in nyckeln i ConfigAPI.java (se Serverinstruktioner)
 
 ---
 
-Du är nu redo att använda Pendlaren för att söka efter resor och generera spellistor!
+Du är nu redo att använda TraFi för att söka efter resor och generera spellistor!
